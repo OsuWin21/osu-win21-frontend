@@ -1,4 +1,4 @@
-const texts = ["ah ah ah", "GOAT Monic", "Joko Gaming","Our Streamer Rara", "Dunia ini isinya ngewe doang. -mamat"];
+const texts = ["ah ah ah", "GOAT Monic", "Joko Gaming", "Our Streamer Rara", "Rei is the best Valo Coach"];
 const typingElement = document.getElementById("typing");
 let textIndex = 0;
 
