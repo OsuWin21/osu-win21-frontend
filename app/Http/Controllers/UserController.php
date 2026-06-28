@@ -32,7 +32,7 @@ class UserController extends Controller
             ->where('maps.status', 2)
             ->where('scores.status', 2)
             ->first();
-
+        
         $rxRecord = DB::table('scores')
             ->join('users', 'scores.userid', '=', 'users.id')
             ->join('maps', 'scores.map_md5', '=', 'maps.md5')
@@ -197,7 +197,7 @@ class UserController extends Controller
 
         $combinedMode = $mode + $rx;
 
-        $apiUrl = env('API_OSU_URL') . "/v1/get_leaderboard?sort={$sort}&mode={$combinedMode}&limit=100&offset=0";
+        $apiUrl = env('API_OSU_URL') . "/v1/get_leaderboard?sort={$sort}&mode={$combinedMode}&limit=50&offset=0";
         $response = Http::get($apiUrl);
         if ($response->successful()) {
             $leaderboard = $response->json()["leaderboard"];
@@ -380,9 +380,7 @@ class UserController extends Controller
                 $recentPlays = collect([]);
             }
 
-            // Filter hanya skor dalam 24 jam terakhir, lalu ambil 10 teratas
             $recentPlays = $recentPlays->filter(function ($play) {
-                // play_time format: Y-m-d\TH:i:s (ISO 8601, e.g. 2025-06-02T07:19:48)
                 if (!isset($play['play_time'])) return false;
                 try {
                     $playTime = Carbon::parse($play['play_time']);

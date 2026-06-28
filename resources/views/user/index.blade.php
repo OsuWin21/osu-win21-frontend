@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="stat-content">
                                     <h4>Standard Vanilla PP Record</h4>
-                                    <p class="mb-0">{{ number_format($vn_record->pp, 0) }}pp by <a class="link link-primary" href="u/{{ $vn_record->id }}">{{ $vn_record->name }}</a></p>
+                                    <p class="mb-0">{{ number_format($vn_record ? $vn_record->pp : 0, 0) }}pp by <a class="link link-primary" href="u/{{ $vn_record ? $vn_record->id : '#' }}">{{ $vn_record ? $vn_record->name : 'No Record' }}</a></p>
                                 </div>
                             </div>
                         </div>

@@ -22,7 +22,6 @@
                                         'id' => $user->id,
                                         'mode' => $m,
                                         'rx' => $rx,
-                                        'sort' => request('sort', 'pp')
                                     ])
                                     : (request()->routeIs('leaderboard')
                                         ? route('leaderboard', [
@@ -61,7 +60,6 @@
                                         'id' => $user->id,
                                         'mode' => $mode,
                                         'rx' => $r,
-                                        'sort' => request('sort', 'pp')
                                     ])
                                     : (!$disabled && request()->routeIs('leaderboard')
                                         ? route('leaderboard', [
