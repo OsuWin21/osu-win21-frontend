@@ -1,0 +1,17 @@
+name: osuwin21-web
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    networks:
+      - stack_network   
+
+networks:
+  stack_network:
+    external: true
+    name: banchopy_default # Assuming using bancho.py stack
